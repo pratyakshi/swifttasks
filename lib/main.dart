@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:swifttasks/common/show_model.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
             radius: 30,
             // child: Image.asset('assets/profile.jpg'), remove const
           ),
-          title: Text('Rat'),
+          title: Text('Ratr'),
           subtitle: Text(
             'Tasks To Do',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
@@ -77,7 +78,12 @@ class HomePage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       )),
-                  onPressed: () {},
+                  onPressed: () => showModalBottomSheet(
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      context: context,
+                      builder: (context) => const AddNewTaskModel()),
                   child: Text(
                     '+ New Task',
                     style: TextStyle(

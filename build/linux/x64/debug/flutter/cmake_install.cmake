@@ -1,8 +1,8 @@
-# Install script for directory: /home/rat/development/projects/flutter/swifttasks/linux/flutter
+# Install script for directory: /home/rat/development/projects/swifttasks/linux/flutter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/rat/development/projects/flutter/swifttasks/build/linux/x64/debug/bundle")
+  set(CMAKE_INSTALL_PREFIX "/home/rat/development/projects/swifttasks/build/linux/x64/debug/bundle")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

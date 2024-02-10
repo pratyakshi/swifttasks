@@ -1,0 +1,1 @@
+ /home/rat/development/projects/swifttasks/.dart_tool/flutter_build/18056d205c251a279c08f68434777707/native_assets.yaml: 
