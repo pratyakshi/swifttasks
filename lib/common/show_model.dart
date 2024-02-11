@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:swifttasks/constants/app_style.dart';
 import 'package:gap/gap.dart';
+import 'package:swifttasks/provider/radio_provider.dart';
 import 'package:swifttasks/widget/datetime_Widget.dart';
 import 'package:swifttasks/widget/radio_widget.dart';
 import 'package:swifttasks/widget/textfield_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddNewTaskModel extends StatelessWidget {
+class AddNewTaskModel extends ConsumerWidget {
   const AddNewTaskModel({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.all(30),
       height: MediaQuery.of(context).size.height * 0.85,
@@ -52,36 +54,58 @@ class AddNewTaskModel extends StatelessWidget {
               child: RadioWidget(
                 category: Colors.greenAccent,
                 titleWidget: 'Personal',
+                valueInput: 1,
+                onChangedValue: () =>
+                    ref.read(radioProvider.notifier).update((state) => 1),
               ),
             ), // Add closing parentheses
             Expanded(
               child: RadioWidget(
                 category: Colors.blueAccent,
                 titleWidget: 'Work',
+                valueInput: 2,
+                onChangedValue: () =>
+                    ref.read(radioProvider.notifier).update((state) => 2),
               ),
             ), // Add closing parentheses
             Expanded(
               child: RadioWidget(
                 category: Colors.pinkAccent,
                 titleWidget: 'General',
+                valueInput: 3,
+                onChangedValue: () =>
+                    ref.read(radioProvider.notifier).update((state) => 3),
               ),
             ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             DateTImeWidget(
-                titletext: 'Date',
-                valueText: 'dd/mm/yy',
-                iconn: Icons.calendar_today),
+              titletext: 'Date',
+              valueText: 'dd/mm/yy',
+              iconn: Icons.calendar_today,
+              onTap: () => showDatePicker(
+                context: context,
+                initialDate: DateTime(2024, 1, 1),
+                firstDate: DateTime(2021),
+                lastDate: DateTime(2024),
+              ),
+            ),
             const Gap(35),
             DateTImeWidget(
-                titletext: 'Time',
-                valueText: 'hh : mm',
-                iconn: Icons.access_time)
+              titletext: 'Time',
+              valueText: 'hh : mm',
+              iconn: Icons.access_time,
+              onTap: () => showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              ),
+            )
           ],
         ),
+
         const Gap(20),
 
         // Button Section

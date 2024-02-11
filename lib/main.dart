@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:swifttasks/common/show_model.dart';
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'SwiftTasks',
-    theme: ThemeData(), // customize theme
-    home: const HomePage(),
+  runApp(ProviderScope(
+    child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'SwiftTasks',
+      theme: ThemeData(), // customize theme
+      home: const HomePage(),
+    ),
   ));
 }
 

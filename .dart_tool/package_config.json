@@ -56,6 +56,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_riverpod",
+      "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/flutter_riverpod-2.4.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///home/rat/development/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -98,6 +104,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "riverpod",
+      "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/riverpod-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///home/rat/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -114,6 +126,12 @@
       "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/stack_trace-1.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "state_notifier",
+      "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/state_notifier-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "stream_channel",
@@ -158,7 +176,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-04T15:44:09.914062Z",
+  "generated": "2024-02-11T10:32:24.871392Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }

@@ -8,11 +8,13 @@ class DateTImeWidget extends StatelessWidget {
     required this.titletext,
     required this.valueText,
     required this.iconn,
+    required this.onTap,
   });
 
   final String titletext;
   final String valueText;
   final IconData iconn;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,25 @@ class DateTImeWidget extends StatelessWidget {
             style: AppStyle.headingOne,
           ),
           const Gap(7),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 240, 237, 237),
-                borderRadius: BorderRadius.circular(8)),
-            child: Row(
-              children: [Icon(iconn), const Gap(12), Text(valueText)],
+          Material(
+            child: Ink(
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 245, 245, 245),
+                  borderRadius: BorderRadius.circular(14)),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(14),
+                onTap: onTap,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Row(
+                    children: [Icon(iconn), const Gap(12), Text(valueText)],
+                  ),
+                ),
+              ),
             ),
           ),
         ],
