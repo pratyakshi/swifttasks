@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:swifttasks/constants/app_style.dart';
 import 'package:gap/gap.dart';
+import 'package:swifttasks/provider/date_time_provider.dart';
 import 'package:swifttasks/provider/radio_provider.dart';
 import 'package:swifttasks/widget/datetime_Widget.dart';
 import 'package:swifttasks/widget/radio_widget.dart';
@@ -14,6 +16,7 @@ class AddNewTaskModel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final dateProv = ref.watch(dateProvider);
     return Container(
       padding: const EdgeInsets.all(30),
       height: MediaQuery.of(context).size.height * 0.85,
@@ -71,7 +74,7 @@ class AddNewTaskModel extends ConsumerWidget {
             Expanded(
               child: RadioWidget(
                 category: Colors.pinkAccent,
-                titleWidget: 'General',
+                titleWidget: 'Gen',
                 valueInput: 3,
                 onChangedValue: () =>
                     ref.read(radioProvider.notifier).update((state) => 3),
@@ -84,24 +87,41 @@ class AddNewTaskModel extends ConsumerWidget {
           children: [
             DateTImeWidget(
               titletext: 'Date',
-              valueText: 'dd/mm/yy',
+              valueText: dateProv.toString(),
               iconn: Icons.calendar_today,
-              onTap: () => showDatePicker(
-                context: context,
-                initialDate: DateTime(2024, 1, 1),
-                firstDate: DateTime(2021),
-                lastDate: DateTime(2024),
-              ),
+              onTap: () async {
+                final pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime(2024, 1, 1),
+                  firstDate: DateTime(2024),
+                  lastDate: DateTime(2028),
+                );
+
+                if (pickedDate != null) {
+                  final format = DateFormat.yMd();
+                  ref
+                      .read(dateProvider.notifier)
+                      .update((state) => format.format(pickedDate));
+                }
+              },
             ),
             const Gap(35),
             DateTImeWidget(
               titletext: 'Time',
-              valueText: 'hh : mm',
+              valueText: ref.watch(timeProvider),
               iconn: Icons.access_time,
-              onTap: () => showTimePicker(
-                context: context,
-                initialTime: TimeOfDay.now(),
-              ),
+              onTap: () async {
+                final getTime = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+
+                if (getTime != null) {
+                  ref
+                      .read(timeProvider.notifier)
+                      .update((state) => getTime.format(context));
+                }
+              },
             )
           ],
         ),
@@ -126,9 +146,9 @@ class AddNewTaskModel extends ConsumerWidget {
                     ),
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 12)),
-                onPressed: () {},
+                onPressed: () => Navigator.pop(context),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Text('Cancel'),
                 ),
               ),
@@ -150,7 +170,7 @@ class AddNewTaskModel extends ConsumerWidget {
                         vertical: 12, horizontal: 12)),
                 onPressed: () {},
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Text('Create'),
                 ),
               ),

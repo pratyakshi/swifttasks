@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:swifttasks/constants/app_style.dart';
 import 'package:gap/gap.dart';
 
-class DateTImeWidget extends StatelessWidget {
+class DateTImeWidget extends ConsumerWidget {
   const DateTImeWidget({
     super.key,
     required this.titletext,
@@ -17,7 +18,7 @@ class DateTImeWidget extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

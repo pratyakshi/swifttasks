@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///home/rat/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -176,7 +182,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-11T10:32:24.871392Z",
+  "generated": "2024-02-13T10:50:07.925786Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }
