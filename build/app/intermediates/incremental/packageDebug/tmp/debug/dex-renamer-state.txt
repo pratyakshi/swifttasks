@@ -1,4 +1,10 @@
-#Tue Feb 13 16:01:59 IST 2024
+#Tue Feb 13 19:09:31 IST 2024
 base.0=/home/rat/development/projects/swifttasks/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+base.1=/home/rat/development/projects/swifttasks/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
+base.2=/home/rat/development/projects/swifttasks/build/app/intermediates/dex/debug/mergeDexDebug/classes3.dex
 path.0=classes.dex
+path.1=classes2.dex
+path.2=classes3.dex
 renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex

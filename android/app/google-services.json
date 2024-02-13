@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "690291656518",
+    "project_id": "swifttasks-92062",
+    "storage_bucket": "swifttasks-92062.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690291656518:android:a8c9796ab5b20806310747",
+        "android_client_info": {
+          "package_name": "com.example.swifttasks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOEwupGiY4xtYIXZ9bZt69h97EbfeEWho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

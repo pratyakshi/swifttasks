@@ -1,9 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:swifttasks/widget/card_todo_widget.dart';
 import 'package:swifttasks/common/show_model.dart';
+import 'package:swifttasks/firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(ProviderScope(
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -98,6 +106,13 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Text('Saturday, 3 February'),
+
+            //Card list view
+            Gap(25),
+            ListView.builder(
+                itemCount: 1,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => const CardToDoWidget()),
           ],
         ),
       ),
