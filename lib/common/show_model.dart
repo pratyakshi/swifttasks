@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:swifttasks/constants/app_style.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
+
+import 'package:swifttasks/model/todo_model.dart';
+import 'package:swifttasks/constants/app_style.dart';
+import 'package:swifttasks/model/todo_model.dart';
 import 'package:swifttasks/provider/date_time_provider.dart';
 import 'package:swifttasks/provider/radio_provider.dart';
+import 'package:swifttasks/provider/service_provider.dart';
 import 'package:swifttasks/widget/datetime_Widget.dart';
 import 'package:swifttasks/widget/radio_widget.dart';
 import 'package:swifttasks/widget/textfield_widget.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddNewTaskModel extends ConsumerWidget {
-  const AddNewTaskModel({
+  AddNewTaskModel({
     super.key,
   });
+
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,12 +50,19 @@ class AddNewTaskModel extends ConsumerWidget {
           style: AppStyle.headingOne,
         ),
         const Gap(8),
-        const TextFieldWIdget(maxLine: 1, hintText: 'Add your task here...'),
+        TextFieldWIdget(
+          maxLine: 1,
+          hintText: 'Add your task here...',
+          textEditingController: titleController,
+        ),
         const Gap(15),
         Text('Description', style: AppStyle.headingOne),
         const Gap(8),
-        const TextFieldWIdget(
-            maxLine: 6, hintText: 'Add a description for your task...'),
+        TextFieldWIdget(
+          maxLine: 6,
+          hintText: 'Add a description for your task...',
+          textEditingController: descriptionController,
+        ),
         const Gap(10),
         Text('Category', style: AppStyle.headingOne),
         Row(
@@ -168,7 +182,30 @@ class AddNewTaskModel extends ConsumerWidget {
                     ),
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 12)),
-                onPressed: () {},
+                onPressed: () {
+                  final getRadioValue = ref.read(radioProvider);
+                  String Category = "";
+
+                  switch (getRadioValue) {
+                    case 1:
+                      Category = 'PERSONAL';
+                      break;
+                    case 2:
+                      Category = 'WORK';
+                      break;
+                    case 3:
+                      Category = 'GEN';
+                      break;
+                  }
+                  ref.read(serviceProvider).addNewTask(TodoModel(
+                      titleTask: titleController.text,
+                      description: descriptionController.text,
+                      category: Category,
+                      dateTask: ref.read(dateProvider),
+                      timeTask: ref.read(timeProvider)));
+
+                  print('Date is saving');
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text('Create'),
